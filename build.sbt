@@ -10,6 +10,6 @@ lazy val root = (project in file("."))
     libraryDependencies ++= Seq(
       guice,
       "org.scalatestplus.play" %% "scalatestplus-play" % "5.1.0" % Test,
-      "ebay" % "client_2.13" % "0.1.0-SNAPSHOT"
+      "ebay" % "client_2.13" % "0.1.0-SNAPSHOT",
     )
   )

@@ -16,9 +16,9 @@ class EbayClient @Inject()()(implicit ec: ExecutionContext) {
   import system.dispatcher
 
   // https://developer.ebay.com/api-docs/sell/fulfillment/resources/order/methods/getOrders
-  def getOrders(userToken: String): EitherT[Future, Either[Throwable, HttpResponse], GetOrdersResponse] = {
-    implicit val client = Http().singleRequest
-    val orderClient = new sell.fulfillment.order.OrderClient()(client, ec, mat)
+  def getOrders(userToken: String): Future[GetOrdersResponse] = {
+    implicit val client = Http().singleRequest(_)
+    val orderClient = sell.fulfillment.order.OrderClient.httpClient(client)(ec, mat)
     orderClient.getOrders()
   }
 }
