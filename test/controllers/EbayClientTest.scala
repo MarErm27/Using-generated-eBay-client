@@ -9,8 +9,8 @@ import play.api.test.Helpers._
 
 class EbayClientTest extends PlaySpec with GuiceOneServerPerSuite with ScalaFutures with IntegrationPatience {
   val ebayClient = app.injector.instanceOf(classOf[EbayClient])
-  "AdyenClientTest" must {
-    "capture" in {
+  "EbayClientTest" must {
+    "getOrders" in {
       val res = await(ebayClient.getOrders(""))
       res shouldBe "???"
     }
